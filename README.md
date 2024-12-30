@@ -45,6 +45,7 @@ Note: Ensure that Docker is installed and running on your system.
 
 ## Demo
 Experience the live demo:
-[Streamlit App Demo]([https://ai-classifier-lab-fz4fbdwdpmkibarzcmldpb.streamlit.app/])
+[Streamlit App Demo](https://ai-classifier-lab-fz4fbdwdpmkibarzcmldpb.streamlit.app/)
+
 
 ---
