@@ -19,15 +19,17 @@ class App:
         self.params = dict()
         self.clf = None
         self.X, self.y = None, None
+
     def run(self):
         self.get_dataset()
         self.add_parameter_ui()
         self.generate()
+
     def Init_Streamlit_Page(self):
         st.title('Streamlit Example')
 
         st.write("""
-        # Explore different classifier and datasets
+        # Explore different classifiers and datasets
         Which one is the best?
         """)
 
@@ -41,6 +43,7 @@ class App:
             'Select classifier',
             ('KNN', 'SVM', 'Random Forest')
         )
+
     def get_dataset(self):
         data = None
         if self.dataset_name == 'Iris':
@@ -52,7 +55,7 @@ class App:
         self.X = data.data
         self.y = data.target
         st.write('Shape of dataset:', self.X.shape)
-        st.write('number of classes:', len(np.unique(self.y)))
+        st.write('Number of classes:', len(np.unique(self.y)))
 
     def add_parameter_ui(self):
         if self.classifier_name == 'SVM':
@@ -69,12 +72,12 @@ class App:
 
     def get_classifier(self):
         if self.classifier_name == 'SVM':
-            self.clf  = SVC(C=self.params['C'])
+            self.clf = SVC(C=self.params['C'])
         elif self.classifier_name == 'KNN':
-            self.clf  = KNeighborsClassifier(n_neighbors=self.params['K'])
+            self.clf = KNeighborsClassifier(n_neighbors=self.params['K'])
         else:
-            self.clf  = RandomForestClassifier(n_estimators=self.params['n_estimators'],
-                max_depth=self.params['max_depth'], random_state=1234)
+            self.clf = RandomForestClassifier(n_estimators=self.params['n_estimators'],
+                                              max_depth=self.params['max_depth'], random_state=1234)
 
     def create_sinusoid(self):
         fig = plt.figure()
@@ -84,8 +87,8 @@ class App:
         x = np.arange(sample)
         y = np.sin(2 * np.pi * f * x / Fs)
         plt.plot(x, y)
-        plt.xlabel('sample(n)')
-        plt.ylabel('voltage(V)')
+        plt.xlabel('Sample (n)')
+        plt.ylabel('Voltage (V)')
         return fig
 
     def generate(self):
@@ -111,17 +114,32 @@ class App:
 
         fig = plt.figure()
         plt.scatter(x1, x2,
-                c=self.y, alpha=0.8,
-                cmap='viridis')
+                    c=self.y, alpha=0.8,
+                    cmap='viridis')
         st.pyplot(fig)
 
-        # fig = self.create_sinusoid()
-        #
-        # #plt.show()
-        # st.pyplot(fig)
-        #
-        # for i in range(100):
-        #     st.write("hello")
-        #     time.sleep(1)
+        #### ADDITIONAL FEATURE ####
+        # Show correlation heatmap
+        if st.sidebar.checkbox('Show Correlation Heatmap'):
+            import seaborn as sns
+            fig = plt.figure()
+            sns.heatmap(np.corrcoef(self.X.T), annot=True, fmt=".2f", cmap='coolwarm', cbar=True)
+            st.pyplot(fig)
 
-        # st.video("https://youtu.be/yVV_t_Tewvs")
+        # Add an interactive sinusoidal wave generator
+        if st.sidebar.checkbox('Generate Sinusoidal Wave'):
+            freq = st.sidebar.slider('Frequency', 1, 20, 5)
+            sample_rate = 8000
+            sample = 8000
+            x = np.arange(sample)
+            y = np.sin(2 * np.pi * freq * x / sample_rate)
+            fig = plt.figure()
+            plt.plot(x, y)
+            plt.title('Generated Sinusoidal Wave')
+            plt.xlabel('Sample')
+            plt.ylabel('Amplitude')
+            st.pyplot(fig)
+
+if __name__ == '__main__':
+    app = App()
+    app.run()
