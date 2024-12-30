@@ -45,6 +45,6 @@ Note: Ensure that Docker is installed and running on your system.
 
 ## Demo
 Experience the live demo:
-[Streamlit App Demo](https://autom-coder-ml-methods-streamlit-main-g0wljb.streamlit.app)
+[Streamlit App Demo]([https://autom-coder-ml-methods-streamlit-main-g0wljb.streamlit.app](https://ai-classifier-lab-fz4fbdwdpmkibarzcmldpb.streamlit.app/))
 
 ---
