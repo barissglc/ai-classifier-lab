@@ -1,32 +1,50 @@
 # Interactive Web App with Streamlit and Scikit-learn
-Explore different datasets and classifier. Streamlit lets you create apps for your machine learning projects with simple
-Python scripts. See official [streamlit website](https://www.streamlit.io/) for more info.
+
+Explore different datasets and classifiers interactively. This application uses Streamlit to provide an intuitive interface for experimenting with machine learning classifiers like KNN, SVM, and Random Forest.
+
+Visit the official [Streamlit website](https://www.streamlit.io/) for more info on creating interactive Python apps.
+
+---
+
+## Features
+- Interactive dataset selection (`Iris`, `Wine`, and `Breast Cancer` datasets).
+- Adjustable classifier parameters through sidebar sliders.
+- Visualizations: PCA scatter plot, correlation heatmap, and sinusoidal wave generator.
+
+---
 
 ## Installation
-You need these dependencies:
-```console
-pip install streamlit
-pip install scikit-learn
-pip install matplotlib
+Make sure you have Python installed on your system. Install the required dependencies:
+```bash
+pip install streamlit scikit-learn matplotlib seaborn
 ```
 
+---
+
 ## Usage - Local
-Run
-```console
+To run the application locally:
+```bash
 streamlit run main.py
 ```
 
-## Usage - Docker
-Derste 
-docker run -p 8080:8080 mlimage bash ile çalıştırmak istemiştik, o metot ile farklı bilgisayarlarda denediğimde sorun olmadı. Aşağıdaki şekliyle doğrudan çalışacaktır.
+---
 
-Run
-```console
-# Build a local docker image
+## Usage - Docker
+Build and run the application using Docker:
+```bash
+# Build a local Docker image
 docker build -t mlimage .
-# Run the image
-docker run -p 8080:8080 mlimage
+
+# Run the Docker container
+docker run -p 8501:8501 mlimage
 ```
 
+Note: Ensure that Docker is installed and running on your system.
+
+---
+
 ## Demo
-Visit [demo](https://autom-coder-ml-methods-streamlit-main-g0wljb.streamlit.app/)
+Experience the live demo:
+[Streamlit App Demo](https://autom-coder-ml-methods-streamlit-main-g0wljb.streamlit.app)
+
+---
